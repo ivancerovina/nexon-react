@@ -1,0 +1,810 @@
+$xxs: "only screen and (max-width: 449px)";
+$xs: "only screen and (min-width: 450px)";
+$sm: "only screen and (min-width: 640px)";
+$md: "only screen and (min-width: 768px)";
+$tablet: "only screen and (min-width: 960px)";
+$lg: "only screen and (min-width: 1024px)";
+$xl: "only screen and (min-width: 1280px)";
+$xxl: "only screen and (min-width: 1536px)";
+
+@import url("//hello.myfonts.net/count/31b299");
+
+@font-face {
+  font-family: "Planer-ExtraBold";
+  src: url("/fonts/31B299_1_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Planer-ExtraBoldItalic";
+  src: url("/fonts/31B299_2_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Planer-Bold";
+  src: url("/fonts/31B299_4_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Planer-Medium";
+  src: url("/fonts/31B299_7_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Planer-DemiBoldItalic";
+  src: url("/fonts/31B299_C_0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lango-Fat";
+  src: url("/fonts/lango-fat.ttf") format("truetype");
+}
+
+.fontMedium {
+  font-family: "Planer-Medium", sans-serif;
+}
+
+.fontBold {
+  font-family: "Planer-Bold", sans-serif;
+}
+
+.fontDemiBoldItalic {
+  font-family: "Planer-DemiBoldItalic", sans-serif;
+}
+
+.fontExtraBold {
+  font-family: "Planer-ExtraBold", sans-serif;
+}
+
+.fontExtraBoldItalic {
+  font-family: "Planer-ExtraBoldItalic", sans-serif;
+}
+
+.grayText {
+  color: #546e7a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #d3e8f4;
+}
+
+td,
+th {
+  border: 1px solid black;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media #{$tablet} {
+    margin-bottom: 3rem;
+  }
+}
+
+.main {
+  background-color: #fff;
+  width: 100%;
+  max-width: 960px;
+  background-size: contain;
+  background-repeat: repeat-x;
+  padding-bottom: 32px;
+
+  @media #{$md} {
+    background-size: contain;
+  }
+
+  @media #{$tablet} {
+    box-shadow: 0 15px 45px 10px rgb(0 0 0 / 0.4),
+    0 4px 6px 4px rgb(0 0 0 / 0.3);
+    margin-top: 3rem;
+    border: 1px solid black;
+  }
+
+  .main__hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @media #{$tablet} {
+      height: 480px;
+    }
+
+    .main-title {
+      text-align: center;
+      color: #13647a;
+      font-size: 3rem;
+      font-family: "Lango-Fat", sans-serif;
+
+      @media #{$xs} {
+        font-size: 3rem;
+      }
+
+      @media #{$md} {
+        margin-top: 20px;
+        font-size: 4rem;
+      }
+
+      @media #{$tablet} {
+        font-size: 5rem;
+      }
+    }
+  }
+
+  .main__content {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    .main__content--wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        padding: 1rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+
+        @media #{$xxs} {
+          font-size: 12px;
+          margin-top: 0.5rem;
+        }
+
+        @media #{$md} {
+          font-size: 1.4rem;
+          margin-top: 3rem;
+        }
+
+        @media #{$lg} {
+          font-size: 1.8rem;
+          margin-top: 5rem;
+        }
+      }
+    }
+
+    .main__content-button {
+      width: 50%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    .main__content-container {
+      width: 100%;
+      height: 100%;
+
+      .main__content-container-buttons {
+        width: 100%;
+        padding-inline: 2rem;
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+
+        @media #{$xxs} {
+          margin-top: 2rem;
+        }
+
+        @media #{$xs} {
+          margin-top: 3rem;
+        }
+
+        @media #{$md} {
+          margin-top: 3rem;
+        }
+
+        @media #{$tablet} {
+          margin-top: 5rem;
+        }
+      }
+
+      button {
+        &.close {
+          aspect-ratio: 1;
+        }
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 300px;
+        border-radius: 2rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        outline: none;
+        border: none;
+
+        @media #{$xs} {
+          font-size: 2rem;
+        }
+
+        @media #{$md} {
+          font-size: 2rem;
+        }
+      }
+
+      .main__content-container-button-back {
+        background: #e3f6fc;
+        border: 3px solid #78909c;
+        color: #78909c;
+        padding: 16px;
+        font-size: 1rem;
+
+        @media #{$xxs} {
+          font-size: 12px;
+          padding: 12px;
+        }
+
+        @media #{$xs} {
+          font-size: 1.4rem;
+        }
+
+        @media #{$md} {
+          font-size: 1.75rem;
+        }
+      }
+
+      .main__content-container-button-save {
+        background: #14a351;
+        border: 3px solid white;
+        color: white;
+        padding: 16px;
+        font-size: 1.2rem;
+        text-align: center;
+
+        @media #{$xxs} {
+          font-size: 12px;
+          padding: 12px;
+        }
+
+        @media #{$xs} {
+          font-size: 1.5rem;
+        }
+
+        @media #{$md} {
+          font-size: 2rem;
+          padding: 12px;
+        }
+
+        &:disabled {
+          background: #8caab5;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+
+.draggable-markup {
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  @media #{$md} {
+    font-size: 1rem;
+  }
+}
+
+.draggabble-wrapper {
+  position: relative;
+  width: 100%;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+
+  .sled-image {
+    position: absolute;
+    width: 200%;
+    height: auto;
+    cursor: pointer;
+  }
+}
+
+.charity__content {
+  width: 100%;
+  position: relative;
+  margin-top: 1rem;
+
+  @media #{$xs} {
+    margin-top: 1rem;
+  }
+
+  @media #{$md} {
+    margin-top: 2rem;
+  }
+
+  @media #{$tablet} {
+    margin-top: 3rem;
+  }
+
+  &-price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 1rem;
+
+    &-value {
+      font-family: "Lango-Fat", sans-serif;
+      font-size: 2.75rem;
+      color: #3b709c;
+
+      @media #{$xs} {
+        font-size: 4rem;
+      }
+
+      @media #{$md} {
+        font-size: 5.25rem;
+      }
+    }
+
+    &-unit {
+      padding-right: 1rem;
+      font-size: 2rem;
+      color: #3b709c;
+      font-family: "Lango-Fat", sans-serif;
+
+      @media #{$xs} {
+        font-size: 3rem;
+      }
+
+      @media #{$md} {
+        font-size: 4rem;
+      }
+    }
+  }
+
+  .charity__content-main {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    padding-inline: 1rem;
+
+    @media #{$xs} {
+      padding-inline: 1.2rem;
+      top: 28%;
+    }
+
+    @media #{$md} {
+      padding-inline: 1.5rem;
+      top: 35%;
+    }
+
+    @media #{$tablet} {
+      padding-inline: 2rem;
+    }
+
+    .dnd-context {
+      display: flex;
+      justify-content: space-between;
+
+      .droppable {
+        width: 100%;
+      }
+    }
+
+    .charity__content-main-info {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      gap: 0.5rem;
+
+      @media #{$xs} {
+        margin-top: 5px;
+        gap: 0.75rem;
+      }
+
+      @media #{$md} {
+        margin-top: 75px;
+        gap: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+        margin-top: 0.25rem;
+        color: #546e7a;
+
+        @media #{$xs} {
+          font-size: 1.5rem;
+        }
+
+        @media #{$md} {
+          font-size: 2rem;
+        }
+      }
+
+      img,
+      a {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+
+        @media #{$xs} {
+          width: 35px;
+          height: 35px;
+        }
+
+        @media #{$md} {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+  }
+}
+
+.popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 30;
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .popup__content {
+    position: fixed;
+    margin-top: 1rem;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 900px;
+    max-height: calc(100vh - 2rem);
+    background: #06283ed9;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    color: white;
+    overflow-y: scroll;
+
+    @media #{$xs} {
+      padding: 3rem;
+    }
+
+    @media #{$lg} {
+      overflow-y: auto;
+    }
+
+    // @media #{$md} {
+    //   min-height: 50vh;
+    // }
+
+    .popup__content-close-btn {
+      width: 35px !important;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: -1rem;
+      right: 1rem;
+    }
+
+    .popup__content-title {
+      font-family: "Planer-Medium", sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: white;
+      margin-top: 2rem;
+      padding-top: 1rem;
+
+      @media #{$xs} {
+        font-size: 2.25rem;
+      }
+      @media #{$md} {
+        font-size: 3rem;
+      }
+    }
+
+    .popup__content-subtitle {
+      font-family: "Planer-Medium", sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      @media #{$xs} {
+        font-size: 1.75rem;
+      }
+
+      @media #{$md} {
+        font-size: 2.25rem;
+      }
+    }
+
+    .popup__content-description {
+      font-family: "Planer-Medium", sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      @media #{$xs} {
+        font-size: 1.2rem;
+      }
+
+      @media #{$md} {
+        font-size: 1.5rem;
+      }
+    }
+
+    .charity__link {
+      text-decoration: underline;
+      color: #fff;
+      display: block;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: white;
+      margin-top: 2rem;
+      @media #{$xs} {
+        font-size: 2rem;
+      }
+      @media #{$md} {
+        font-size: 2.5rem;
+      }
+    }
+
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+      @media #{$xs} {
+        font-size: 1.5rem;
+      }
+
+      @media #{$md} {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .popup__title {
+    font-family: "Planer-Medium", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+    margin-top: 2rem;
+    padding-top: 1rem;
+
+    @media #{$xs} {
+      font-size: 2.25rem;
+    }
+    @media #{$md} {
+      font-size: 3rem;
+    }
+  }
+
+  .popup__description {
+    font-family: "Planer-Medium", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    @media #{$xs} {
+      font-size: 1.2rem;
+    }
+
+    @media #{$md} {
+      font-size: 1.5rem;
+    }
+  }
+
+  .popup__content-home-btn {
+    background: #e3f6fc;
+    border: 3px solid #78909c;
+    color: #78909c;
+    padding: 10px;
+    font-size: 1rem;
+
+    @media #{$xs} {
+      font-size: 1.4rem;
+    }
+
+    @media #{$md} {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+/**
+ * If you're changing the slider image, change the following:
+ * div.custom-slider > aspect-ratio - to the aspect ratio of the svg
+ * div.content > padding-inline - change to the actual padding IN PERCENT (unused space on edges)
+ * div.section > width - change to the width of the section IN PERCENT
+ */
+div.custom-slider {
+  aspect-ratio: 759 / 53;
+  width: 100%;
+  height: auto;
+  position: relative;
+
+  img.background {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+  }
+
+  div.content {
+    top: -15%;
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-right: 10%;
+    padding-left: 2%;
+
+    div.section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 10%;
+
+      .draggabble-wrapper {
+        aspect-ratio: 1;
+        width: 35%;
+        min-width: 16px;
+        user-select: none;
+      }
+    }
+  }
+}
+
+.slider-gradient {
+  background: rgb(255,255,255);
+  background: -moz-linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(211,232,244,1) 15%, rgba(219,236,246,1) 58%, rgba(244,249,252,1) 85%, rgba(255,255,255,1) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(211,232,244,1) 15%, rgba(219,236,246,1) 58%, rgba(244,249,252,1) 85%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(211,232,244,1) 15%, rgba(219,236,246,1) 58%, rgba(244,249,252,1) 85%, rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+}
+
+div.modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(3px);
+
+  div.content {
+    border-radius: 16px;
+    padding: 48px;
+    background-color: #023027;
+    width: 60%;
+    height: 70%;
+    overflow: auto;
+
+    @media #{$xxs} {
+      width: 90%;
+      height: 80%;
+      padding: 12px;
+    }
+
+    @media #{$xs} {
+      width: 80%;
+      padding: 16px;
+    }
+
+    @media #{$md} {
+      width: 90%;
+    }
+
+    div.header {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    div.texts {
+      a {
+        color: orange;
+      }
+
+      h2.title {
+        font-family: "Planer-Medium", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: white;
+        margin-top: 2rem;
+        padding-top: 1rem;
+
+        @media #{$xs} {
+          font-size: 2.25rem;
+        }
+
+        @media #{$md} {
+          font-size: 3rem;
+        }
+      }
+
+      p.description {
+        text-align: center;
+        color: white;
+        font-family: "Planer-Medium", sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+
+        @media #{$xxs} {
+          font-size: 1.1rem;
+        }
+
+        @media #{$md} {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.charity-content {
+  margin: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  gap: 16px;
+
+  @media #{$xxs} {
+    font-size: 1rem;
+
+    .img-button {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  @media #{$md} {
+    font-size: 1.4rem;
+  }
+
+  @media #{$lg} {
+    font-size: 1.8rem;
+  }
+
+  .img-button {
+    cursor: pointer;
+
+    &.link-button {
+      margin-left: auto;
+    }
+  }
+}
