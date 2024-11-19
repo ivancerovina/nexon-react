@@ -10,7 +10,7 @@ export default function Draggable(props: TDraggableProps) {
         transform: `translate3d(${transform.x}px,0, 0)`,
     } : undefined;
 
-    return (<div className="draggabble-wrapper">
+    return (<div className="draggable-wrapper">
             <img
                 {...listeners}
                 {...attributes}

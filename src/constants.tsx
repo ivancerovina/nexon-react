@@ -28,7 +28,10 @@ export const CharityTitles: TCharityContent = {
 };
 
 export const CharityImages: TCharityContent = {
-    szentistvanzene: "/assets/snow-bg/snow-1.svg", autizmus: "/assets/snow-bg/snow-2.svg", noe: "/assets/snow-bg/snow-1.svg", lampas92: "/assets/snow-bg/snow-2.svg",
+    szentistvanzene: "/assets/snow-bg/snow-1.svg",
+    autizmus: "/assets/snow-bg/snow-2.svg",
+    noe: "/assets/snow-bg/snow-1.svg",
+    lampas92: "/assets/snow-bg/snow-2.svg",
 };
 
 export const CharityPopupTexts: TCharityPopupContent = {

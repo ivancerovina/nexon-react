@@ -1,0 +1,109 @@
+@import "variables.scss";
+
+div.modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(3px);
+
+  div.content {
+    border-radius: 16px;
+    background-color: rgba(2, 48, 39, 0.85);
+    max-width: 600px;
+    width: 60%;
+    height: 70%;
+    overflow: auto;
+
+    @media #{$xxs} {
+      width: 90%;
+      height: 80%;
+    }
+
+    @media #{$xs} {
+      width: 80%;
+    }
+
+    @media #{$md} {
+      width: 90%;
+    }
+
+    div.header {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      padding: 12px;
+
+      img {
+        @media #{$xxs} {
+          width: 24px;
+        }
+
+        @media #{$xs} {
+          width: 32px;
+        }
+      }
+    }
+
+    div.texts {
+      text-align: center;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 12px;
+      padding-inline: 12px;
+      height: 85%;
+      overflow-y: scroll;
+
+      a {
+        color: orange;
+      }
+
+      h2 {
+        font-family: "Planer-Medium", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 12px;
+        color: white;
+
+        @media #{$xs} {
+          font-size: 2.25rem;
+        }
+
+        @media #{$md} {
+          font-size: 3rem;
+        }
+      }
+
+      h3 {
+        font-family: "Planer-Medium", sans-serif;
+        font-size: 1.5rem;
+      }
+
+      p {
+        text-align: center;
+        color: white;
+        font-family: "Planer-Medium", sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+
+        @media #{$xxs} {
+          font-size: 1.1rem;
+        }
+
+        @media #{$md} {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

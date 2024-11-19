@@ -1,12 +1,13 @@
 import {DndContext, DragEndEvent} from "@dnd-kit/core";
 import Draggable from "../components/Draggable";
 import {SledContext} from "../context/sled-context";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {TotalContext} from "../context/total-context";
 import {CharityPopupTexts, REQUIRED_DONATION_SUM, STEP, TOTAL_STEPS} from "../constants";
 import {TCharityProps, TSled} from "../types.ts";
 import Droppable from "./Droppable.tsx";
 import {restrictToHorizontalAxis, restrictToWindowEdges} from "@dnd-kit/modifiers";
+import Modal from "./Modal.tsx";
 
 const Charity = ({title, image, link, id, parent, sliderKnob}: TCharityProps) => {
     const containers = Array.from({length: TOTAL_STEPS}, (_, i) => i.toString());
@@ -14,11 +15,21 @@ const Charity = ({title, image, link, id, parent, sliderKnob}: TCharityProps) =>
     const {total, setTotal} = useContext(TotalContext);
     const [popupOpen, setPopupOpen] = useState(false);
 
+    useEffect(() => {
+        const main = document.querySelector("body");
+        console.log("popupOpen", popupOpen);
+        if (popupOpen) {
+            main?.classList?.add("no-scroll");
+        } else {
+            main?.classList?.remove("no-scroll");
+        }
+    }, [popupOpen]);
+
     const draggableMarkup = <Draggable src={sliderKnob} id={id}/>;
 
     return (<>
         <div className="charity__content">
-            <div className={"slider-gradient"}>
+            <div className={"actual-content slider-gradient"}>
                 <div className="charity__content-price">
                     <h1 className="charity__content-price-value">
                         {new Intl.NumberFormat("hu-HU", {
@@ -38,7 +49,7 @@ const Charity = ({title, image, link, id, parent, sliderKnob}: TCharityProps) =>
                     </div>
                 </DndContext>
             </div>
-            <div className="charity-content">
+            <div className="charity-links">
                 <img
                     className={"img-button info-button"}
                     src="/assets/buttons/info.svg"
@@ -54,19 +65,7 @@ const Charity = ({title, image, link, id, parent, sliderKnob}: TCharityProps) =>
                 />
             </div>
         </div>
-        {popupOpen && (<div className={"modal"}>
-            <div className="content">
-                <div className="header">
-                    <button className="close" onClick={() => setPopupOpen(false)}>
-                        <img src="/assets/buttons/close.svg" alt="close"/>
-                    </button>
-                </div>
-                <div className="texts">
-                    <h2 className="title">{title.toUpperCase()}</h2>
-                    <p className="description">{CharityPopupTexts[id]}</p>
-                </div>
-            </div>
-        </div>)}
+        <Modal title={title.toUpperCase()} onClose={() => setPopupOpen(false)} open={popupOpen} children={CharityPopupTexts[id]} />
     </>);
 
     function handleDragEnd(event: DragEndEvent) {

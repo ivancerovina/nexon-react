@@ -1,4 +1,7 @@
-import "./styles/globals.scss";
+import "./styles/global.scss";
+import "./styles/modal.scss";
+import "./styles/slider.scss";
+import "./styles/typography.scss";
 import axios from "axios";
 import {
     CharityImages,
@@ -84,53 +87,47 @@ function App() {
     }
 
     return (<div className="container">
-            <Toaster position={"top-right"}/>
-            <div
-                className="main"
-                style={{
-                    backgroundImage: "url(/themes/custom/nexon/libraries/karacsony/build/bgImage.png)",
-                }}
-            >
-                <div className="main__hero">
-                    <img src={"/assets/header.svg"} style={{width: "100%"}}/>
+        <Toaster position={"top-right"}/>
+        <div
+            className="main"
+            style={{
+                backgroundImage: "url(/themes/custom/nexon/libraries/karacsony/build/bgImage.png)",
+            }}
+        >
+            <div className="main__hero">
+                <img src={"/assets/header.svg"} style={{width: "100%"}}/>
+            </div>
+
+            <div className="main__content">
+                <div className="main__content--wrapper">
+                    <p className="fontMedium grayText">
+                        A csúszkán minden beosztás 400 000 forintot jelent. Húzza az ajándékokat aszerint,
+                        ahogyan Ön osztaná el az adományt az alapítványok között. A kiválasztott arányokat
+                        végül egyesítjük, s ennek megfelelően osztjuk szét a felajánlott összeget a négy
+                        szervezet között. Miután végzett, az „Elküldöm” gombra kattintva véglegesítse döntését.
+                    </p>
                 </div>
+                <Toaster/>
+                <div className="main__content-container">
+                    <TotalContext.Provider value={{total, setTotal}}>
+                        <SledContext.Provider value={{sleds, setSleds}}>
+                            {sleds.map(({id, parent, value}) => {
+                                return (<Charity
+                                    image={CharityImages[id]}
+                                    sliderKnob={CharityKnobs[id]}
+                                    title={CharityTitles[id]}
+                                    link={CharityLinks[id]}
+                                    id={id}
+                                    parent={parent}
+                                    key={id}
+                                    value={value}
+                                />);
+                            })}
 
-                <div className="main__content">
-                    <div className="main__content--wrapper">
-                        <p className="fontMedium grayText">
-                            A szánkópályán minden beosztás 250 ezer forintot jelent.{" "}
-                            <b>
-                                <u>Húzza a szánkókat</u>
-                            </b>{" "}
-                            aszerint, ahogyan Ön osztaná el a NEXON 3 millió forint összegű
-                            adományát az alapítványok között. A kiválasztott arányokat végül
-                            egyesítjük, s ennek megfelelően osztjuk szét a felajánlott
-                            összeget a négy szervezet között. Az információs gombra kattintva
-                            megtudhatja, milyen célra kéri az alapítvány az idei támogatást.
-                            Miután végzett, az "Elküldöm" gombra kattintva véglegesítse
-                            döntését.
-                        </p>
-                    </div>
-                    <Toaster/>
-                    <div className="main__content-container">
-                        <TotalContext.Provider value={{total, setTotal}}>
-                            <SledContext.Provider value={{sleds, setSleds}}>
-                                {sleds.map(({id, parent, value}) => {
-                                    return (<Charity
-                                        image={CharityImages[id]}
-                                        sliderKnob={CharityKnobs[id]}
-                                        title={CharityTitles[id]}
-                                        link={CharityLinks[id]}
-                                        id={id}
-                                        parent={parent}
-                                        key={id}
-                                        value={value}
-                                    />);
-                                })}
-
-                                <div className="main__content-container-buttons">
-                                    {popupOpen ? (<div className="popup">
-                                        <div className="popup__content flex">
+                            <div className="main__content-container-buttons bottom-gradient">
+                                {popupOpen ? (<div className="modal">
+                                    <div className="content">
+                                        <div className="header">
                                             <button
                                                 className="popup__content-close-btn"
                                                 onClick={() => {
@@ -144,61 +141,62 @@ function App() {
                                                     alt="close btn"
                                                 />
                                             </button>
-                                            {variant === "success" && (<>
-                                                <h1 className="popup__title fontExtraBold">
-                                                    Köszönjük szavazatát!
-                                                </h1>
-                                                <button
-                                                    onClick={() => (window.parent.location.href = "https://www.nexon.hu/")}
-                                                    className="popup__content-home-btn"
-                                                >
-                                                    <span className="fontExtraBold">Kezdőlap</span>
-                                                </button>
-                                            </>)}
-                                            {variant === "error" && (<>
-                                                <h1 className="popup__title fontExtraBold">
-                                                    Köszönjük!
-                                                </h1>
-                                                <p className="fontMedium">
-                                                    Már regisztráltuk az Ön szavazatát, kérjük
-                                                    próbálja meg később!
-                                                </p>
-                                                <button
-                                                    onClick={() => (window.parent.location.href = "https://www.nexon.hu/")}
-                                                    className="popup__content-home-btn"
-                                                >
-                                                    <span className="fontExtraBold">Kezdőlap</span>
-                                                </button>
-                                            </>)}
                                         </div>
-                                    </div>) : null}
-                                    <button
-                                        onClick={() => {
-                                            setSleds(initialState);
-                                            setTotal(0);
-                                        }}
-                                        disabled={total === 0}
-                                        className="main__content-container-button-back  fontExtraBold"
-                                    >
-                                        VISSZAÁLLÍTÁS
-                                    </button>
-                                    <button
-                                        className="main__content-container-button-save  fontExtraBold"
-                                        onClick={handleSubmit}
-                                        disabled={(() => {
-                                            console.log(total);
-                                            return total < REQUIRED_DONATION_SUM
-                                        })()}
-                                    >
-                                        ELKÜLDÖM
-                                    </button>
-                                </div>
-                            </SledContext.Provider>
-                        </TotalContext.Provider>
-                    </div>
+                                        {variant === "success" && (<>
+                                            <h1 className="popup__title fontExtraBold">
+                                                Köszönjük szavazatát!
+                                            </h1>
+                                            <button
+                                                onClick={() => (window.parent.location.href = "https://www.nexon.hu/")}
+                                                className="popup__content-home-btn"
+                                            >
+                                                <span className="fontExtraBold">Kezdőlap</span>
+                                            </button>
+                                        </>)}
+                                        {variant === "error" && (<>
+                                            <h1 className="popup__title fontExtraBold">
+                                                Köszönjük!
+                                            </h1>
+                                            <p className="fontMedium">
+                                                Már regisztráltuk az Ön szavazatát, kérjük
+                                                próbálja meg később!
+                                            </p>
+                                            <button
+                                                onClick={() => (window.parent.location.href = "https://www.nexon.hu/")}
+                                                className="popup__content-home-btn"
+                                            >
+                                                <span className="fontExtraBold">Kezdőlap</span>
+                                            </button>
+                                        </>)}
+                                    </div>
+                                </div>) : null}
+                                <button
+                                    onClick={() => {
+                                        setSleds(initialState);
+                                        setTotal(0);
+                                    }}
+                                    disabled={total === 0}
+                                    className="main__content-container-button-back  fontExtraBold"
+                                >
+                                    VISSZAÁLLÍTÁS
+                                </button>
+                                <button
+                                    className="main__content-container-button-save  fontExtraBold"
+                                    onClick={handleSubmit}
+                                    disabled={(() => {
+                                        console.log(total);
+                                        return total < REQUIRED_DONATION_SUM
+                                    })()}
+                                >
+                                    ELKÜLDÖM
+                                </button>
+                            </div>
+                        </SledContext.Provider>
+                    </TotalContext.Provider>
                 </div>
             </div>
-        </div>);
+        </div>
+    </div>);
 }
 
 export default App;
