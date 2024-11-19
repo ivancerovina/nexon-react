@@ -9,35 +9,106 @@ $xxl: "only screen and (min-width: 1536px)";
 
 @import url("//hello.myfonts.net/count/31b299");
 
-@font-face {
-  font-family: "Planer-ExtraBold";
-  src: url("/fonts/31B299_1_0.ttf") format("truetype");
-}
+@import url("//hello.myfonts.net/count/31b299");
+
 
 @font-face {
-  font-family: "Planer-ExtraBoldItalic";
-  src: url("/fonts/31B299_2_0.ttf") format("truetype");
+  font-family: 'Planer-ExtraLightItalic';
+  src: url('/fonts/31B299_0_0.eot');
+  src: url('/fonts/31B299_0_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_0_0.woff2') format('woff2'), url('/fonts/31B299_0_0.woff') format('woff'), url('/fonts/31B299_0_0.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: "Planer-Bold";
-  src: url("/fonts/31B299_4_0.ttf") format("truetype");
-}
 
 @font-face {
-  font-family: "Planer-Medium";
-  src: url("/fonts/31B299_7_0.ttf") format("truetype");
+  font-family: 'Planer-ExtraBold';
+  src: url('/fonts/31B299_1_0.eot');
+  src: url('/fonts/31B299_1_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_1_0.woff2') format('woff2'), url('/fonts/31B299_1_0.woff') format('woff'), url('/fonts/31B299_1_0.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: "Planer-DemiBoldItalic";
-  src: url("/fonts/31B299_C_0.ttf") format("truetype");
-}
 
 @font-face {
-  font-family: "Lango-Fat";
-  src: url("/fonts/lango-fat.ttf") format("truetype");
+  font-family: 'Planer-ExtraBoldItalic';
+  src: url('/fonts/31B299_2_0.eot');
+  src: url('/fonts/31B299_2_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_2_0.woff2') format('woff2'), url('/fonts/31B299_2_0.woff') format('woff'), url('/fonts/31B299_2_0.ttf') format('truetype');
 }
+
+
+@font-face {
+  font-family: 'Planer-ExtraLight';
+  src: url('/fonts/31B299_3_0.eot');
+  src: url('/fonts/31B299_3_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_3_0.woff2') format('woff2'), url('/fonts/31B299_3_0.woff') format('woff'), url('/fonts/31B299_3_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-Bold';
+  src: url('/fonts/31B299_4_0.eot');
+  src: url('/fonts/31B299_4_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_4_0.woff2') format('woff2'), url('/fonts/31B299_4_0.woff') format('woff'), url('/fonts/31B299_4_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-Regular';
+  src: url('/fonts/31B299_5_0.eot');
+  src: url('/fonts/31B299_5_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_5_0.woff2') format('woff2'), url('/fonts/31B299_5_0.woff') format('woff'), url('/fonts/31B299_5_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-Light';
+  src: url('/fonts/31B299_6_0.eot');
+  src: url('/fonts/31B299_6_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_6_0.woff2') format('woff2'), url('/fonts/31B299_6_0.woff') format('woff'), url('/fonts/31B299_6_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-Medium';
+  src: url('/fonts/31B299_7_0.eot');
+  src: url('/fonts/31B299_7_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_7_0.woff2') format('woff2'), url('/fonts/31B299_7_0.woff') format('woff'), url('/fonts/31B299_7_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-LightItalic';
+  src: url('/fonts/31B299_8_0.eot');
+  src: url('/fonts/31B299_8_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_8_0.woff2') format('woff2'), url('/fonts/31B299_8_0.woff') format('woff'), url('/fonts/31B299_8_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-Italic';
+  src: url('/fonts/31B299_9_0.eot');
+  src: url('/fonts/31B299_9_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_9_0.woff2') format('woff2'), url('/fonts/31B299_9_0.woff') format('woff'), url('/fonts/31B299_9_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-BoldItalic';
+  src: url('/fonts/31B299_A_0.eot');
+  src: url('/fonts/31B299_A_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_A_0.woff2') format('woff2'), url('/fonts/31B299_A_0.woff') format('woff'), url('/fonts/31B299_A_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-DemiBold';
+  src: url('/fonts/31B299_B_0.eot');
+  src: url('/fonts/31B299_B_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_B_0.woff2') format('woff2'), url('/fonts/31B299_B_0.woff') format('woff'), url('/fonts/31B299_B_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-DemiBoldItalic';
+  src: url('/fonts/31B299_C_0.eot');
+  src: url('/fonts/31B299_C_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_C_0.woff2') format('woff2'), url('/fonts/31B299_C_0.woff') format('woff'), url('/fonts/31B299_C_0.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Planer-MediumItalic';
+  src: url('/fonts/31B299_D_0.eot');
+  src: url('/fonts/31B299_D_0.eot?#iefix') format('embedded-opentype'), url('/fonts/31B299_D_0.woff2') format('woff2'), url('/fonts/31B299_D_0.woff') format('woff'), url('/fonts/31B299_D_0.ttf') format('truetype');
+}
+
 
 .fontMedium {
   font-family: "Planer-Medium", sans-serif;
@@ -340,6 +411,7 @@ th {
     justify-content: flex-end;
     width: 100%;
     gap: 1rem;
+    padding-inline: 3%;
 
     &-value {
       font-family: "Lango-Fat", sans-serif;
@@ -681,11 +753,11 @@ div.custom-slider {
 }
 
 .slider-gradient {
-  background: rgb(255,255,255);
-  background: -moz-linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(211,232,244,1) 15%, rgba(219,236,246,1) 58%, rgba(244,249,252,1) 85%, rgba(255,255,255,1) 100%);
-  background: -webkit-linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(211,232,244,1) 15%, rgba(219,236,246,1) 58%, rgba(244,249,252,1) 85%, rgba(255,255,255,1) 100%);
-  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(211,232,244,1) 15%, rgba(219,236,246,1) 58%, rgba(244,249,252,1) 85%, rgba(255,255,255,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(211, 232, 244, 1) 15%, rgba(219, 236, 246, 1) 58%, rgba(244, 249, 252, 1) 85%, rgba(255, 255, 255, 1) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(211, 232, 244, 1) 15%, rgba(219, 236, 246, 1) 58%, rgba(244, 249, 252, 1) 85%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(211, 232, 244, 1) 15%, rgba(219, 236, 246, 1) 58%, rgba(244, 249, 252, 1) 85%, rgba(255, 255, 255, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff", GradientType=1);
 }
 
 div.modal {
