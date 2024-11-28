@@ -35,12 +35,13 @@ div.custom-slider {
       height: 100%;
       width: 10%;
 
+      // this is the "draggable" element
       .draggable-wrapper {
         aspect-ratio: 1;
-        width: 40%;
+        width: 60%;
         min-width: 16px;
         user-select: none;
-        transform: translateY(-2px);
+        transform: translateY(-4px);
       }
     }
   }

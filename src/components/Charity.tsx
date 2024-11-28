@@ -76,6 +76,7 @@ const Charity = ({title, image, link, id, parent, sliderKnob}: TCharityProps) =>
 
         let newValue;
         if (!over || !over?.id) return;
+        // @ts-expect-error type error
         newSleds = sleds.map((sled: TSled) => {
             if (id === sled.id) {
                 if (newTotal + +over.id * STEP > REQUIRED_DONATION_SUM) {
@@ -92,6 +93,7 @@ const Charity = ({title, image, link, id, parent, sliderKnob}: TCharityProps) =>
             return sled;
         });
 
+        // @ts-expect-error type error
         setSleds(newSleds);
         setTotal(newTotal + (newValue ?? +over.id * STEP));
     }

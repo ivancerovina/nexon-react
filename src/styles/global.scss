@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import "./variables.scss";
 
 *,
 *::before,
@@ -67,22 +67,31 @@ body {
       flex-direction: column;
       align-items: center;
 
+      // main description
       p {
         padding-inline: 2rem;
         text-align: center;
 
         @media #{$xxs} {
-          font-size: 12px;
+          font-size: 0.75rem;
           margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        @media #{$xs} {
+          font-size: 1rem;
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
         }
 
         @media #{$md} {
-          font-size: 1.4rem;
+          font-size: 1.25rem;
           margin-top: 3rem;
+          margin-bottom: 1rem;
         }
 
         @media #{$lg} {
-          font-size: 1.8rem;
+          font-size: 1.5rem;
           margin-top: 5rem;
         }
       }
@@ -104,13 +113,13 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2.5rem;
+        gap: 1.5rem;
         padding-top: 3rem;
         padding-bottom: 2.2rem;
       }
 
       button {
-        &.close {
+        &.close-btn {
           aspect-ratio: 1;
         }
 
@@ -167,17 +176,17 @@ body {
         text-align: center;
 
         @media #{$xxs} {
-          font-size: 1rem;
+          font-size: 1.2rem;
           padding: 8px 16px;
         }
 
         @media #{$xs} {
-          font-size: 1.5rem;
+          font-size: 1.7rem;
           padding: 8px 18px;
         }
 
         @media #{$md} {
-          font-size: 2rem;
+          font-size: 2.2rem;
           padding: 8px 32px;
         }
 
@@ -227,19 +236,8 @@ img {
   margin-top: 0;
 
   .actual-content {
-    padding-top: 5rem;
+    padding-top: 5%;
 
-    @media #{$xs} {
-      padding-top: 3.5rem;
-    }
-
-    @media #{$md} {
-      padding-top: 4rem;
-    }
-
-    @media #{$xxs} {
-      padding-top: 2.5rem;
-    }
   }
 
   &-price {
@@ -251,21 +249,20 @@ img {
     gap: 0.5rem;
     padding-inline: 3%;
     position: absolute;
-    top: 5%;
+    top: -5.5%;
 
     &-value {
       font-family: "Planer-Bold", sans-serif;
-      font-size: 2.75rem;
+      font-size: 2.5rem;
       color: #3b709c;
       letter-spacing: 3px;
-      transform: translateY(-5%);
 
       @media #{$xs} {
         font-size: 4rem;
       }
 
       @media #{$md} {
-        font-size: 5.25rem;
+        font-size: 4.5rem;
       }
     }
 
@@ -366,14 +363,13 @@ img {
 
   .charity-links {
     padding-inline: 3%;
-    margin-top: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
     text-transform: uppercase;
     font-size: 1.5rem;
     gap: 16px;
-    padding: 16px;
+    padding: 16px 32px;
 
     p {
       color: #596c7a;
@@ -459,4 +455,24 @@ img {
 
 .no-scroll {
   overflow: hidden !important;
+}
+
+a.nexon-link {
+  padding: 8px 16px;
+  background-color: #fff;
+  outline: 0;
+  border: 0;
+  font-size: 24px;
+  margin: 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-family: "Planer-Bold", sans-serif;
+  text-decoration: none;
+  font-weight: 700;
+  color: #6BAF8D !important;
+}
+
+.bottom-button {
+  height: 10%;
+  width: 50%;
 }

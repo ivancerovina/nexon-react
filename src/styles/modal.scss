@@ -15,12 +15,13 @@ div.modal {
   backdrop-filter: blur(3px);
 
   div.content {
+    display: flex;
+    flex-direction: column;
     border-radius: 16px;
     background-color: rgba(2, 48, 39, 0.85);
-    max-width: 600px;
-    width: 60%;
-    height: 70%;
-    overflow: auto;
+    max-width: 700px;
+    max-height: 80%;
+    height: fit-content;
 
     @media #{$xxs} {
       width: 90%;
@@ -32,51 +33,85 @@ div.modal {
     }
 
     @media #{$md} {
-      width: 90%;
+      width: 50%;
+    }
+
+    &.fit-content {
+      height: auto;
+      padding: 1.5rem;
     }
 
     div.header {
       display: flex;
       justify-content: flex-end;
-      width: 100%;
       padding: 12px;
 
-      img {
-        @media #{$xxs} {
-          width: 24px;
-        }
+      button {
+        border: 0;
+        outline: 0;
+        background-color: inherit;
 
-        @media #{$xs} {
-          width: 32px;
+        img {
+          @media #{$xxs} {
+            width: 24px;
+          }
+
+          @media #{$xs} {
+            width: 32px;
+          }
         }
       }
     }
 
     div.texts {
+      flex: 1;
       text-align: center;
       color: #fff;
       display: flex;
       align-items: center;
       flex-direction: column;
-      gap: 12px;
-      padding-inline: 12px;
-      height: 85%;
-      overflow-y: scroll;
+      gap: 0.75rem;
+      padding-inline: 3rem;
+      overflow: auto auto;
+      font-size: 1.5rem;
+
+      @media #{$xxs} {
+        padding-inline: 1.5rem;
+        font-size: 1.1rem;
+        gap: 0.25rem;
+      }
+
+      @media #{$xs} {
+        font-size: 1.25rem;
+        padding-inline: 3rem;
+      }
+
+      @media #{$md} {
+        font-size: 1.5rem;
+      }
 
       a {
         color: orange;
+        font-family: "Planer-Medium", sans-serif;
+        letter-spacing: 1px;
+        font-size: inherit;
       }
 
       h2 {
         font-family: "Planer-Medium", sans-serif;
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 3rem;
         text-align: center;
-        margin-bottom: 12px;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
         color: white;
 
-        @media #{$xs} {
+        @media #{$xxs} {
           font-size: 2.25rem;
+        }
+
+        @media #{$xs} {
+          font-size: 2.5rem;
         }
 
         @media #{$md} {
@@ -86,22 +121,56 @@ div.modal {
 
       h3 {
         font-family: "Planer-Medium", sans-serif;
-        font-size: 1.5rem;
-      }
-
-      p {
-        text-align: center;
-        color: white;
-        font-family: "Planer-Medium", sans-serif;
-        font-weight: 400;
-        font-size: 1rem;
+        font-size: 2.25rem;
 
         @media #{$xxs} {
-          font-size: 1.1rem;
+          font-size: 1.75rem;
+        }
+
+        @media #{$xs} {
+          font-size: 2rem;
         }
 
         @media #{$md} {
-          font-size: 1.2rem;
+          font-size: 2.25rem;
+        }
+      }
+
+      p {
+        text-align: left;
+        color: white;
+        font-family: "Planer-Medium", sans-serif;
+        font-weight: 400;
+        font-size: 1.5rem;
+
+        @media #{$xxs} {
+          font-size: 1rem;
+        }
+
+        @media #{$xs} {
+          font-size: 1.25rem;
+        }
+
+        @media #{$md} {
+          font-size: 1.5rem;
+        }
+      }
+
+      button {
+        border: 0;
+        outline: 0;
+        background-color: #e4f7fd;
+        font-size: 1.5rem;
+        padding: 0.5rem 1.75rem;
+        font-family: "Planer-Bold", sans-serif;
+        font-weight: 600;
+        border-radius: 16px;
+        color: #95aab3;
+        margin-top: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #c3e7f5;
         }
       }
     }

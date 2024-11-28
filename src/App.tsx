@@ -2,6 +2,7 @@ import "./styles/global.scss";
 import "./styles/modal.scss";
 import "./styles/slider.scss";
 import "./styles/typography.scss";
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import {
     CharityImages,
@@ -9,14 +10,17 @@ import {
     CharityLinks,
     charityNames,
     CharityTitles,
-    REQUIRED_DONATION_SUM
+    MAIN_DESCRIPTION,
+    REQUIRED_DONATION_SUM,
+    STAGE
 } from "./constants.tsx";
 import {useState} from "react";
-import {toast, Toaster} from "react-hot-toast";
 import Charity from "./components/Charity.tsx";
 import {SledContext} from "./context/sled-context.tsx";
 import {TotalContext} from "./context/total-context.tsx";
-import {TDataToSubmit, TSled} from "./types.ts";
+import {API_URLS, TDataToSubmit, TSled} from "./types.ts";
+import {toast, ToastContainer} from "react-toastify";
+import Modal from "./components/Modal.tsx";
 
 const initialState: TSled[] = Object.values(charityNames).map((name) => ({
     id: name, parent: "0", value: 0,
@@ -25,8 +29,7 @@ const initialState: TSled[] = Object.values(charityNames).map((name) => ({
 function App() {
     const [sleds, setSleds] = useState<TSled[]>(initialState);
     const [total, setTotal] = useState<number>(0);
-    const [popupOpen, setPopupOpen] = useState<boolean>(false);
-    const [variant, setVariant] = useState<"success" | "error" | "none">("none");
+    const [successModalShown, setSuccessModalShown] = useState<boolean>(false);
 
     async function handleSubmit() {
         if (total < REQUIRED_DONATION_SUM) return toast.error(`Total must be ${REQUIRED_DONATION_SUM} Ft`);
@@ -39,15 +42,7 @@ function App() {
         const {ip} = res.data;
         data.ip = ip;
 
-        // setPopupOpen(true);
-        // setVariant("error");
-
-        // return;
-
-        const API_URL = "" // https://www.nexon.hu/giveaway";
-        // if (process.env.NODE_ENV === "development") API_URL = API_URL_DEVELOPMENT;
-        // if (process.env.NODE_ENV === "test") API_URL = API_URL_STAGING;
-        // if (process.env.NODE_ENV === "production") API_URL = API_URL_PRODUCTION;
+        const API_URL = API_URLS[STAGE];
 
         try {
             const res = await axios.post(API_URL, {
@@ -58,36 +53,37 @@ function App() {
                 },
             });
 
-            if (res.status === 425) {
-                setPopupOpen(true);
-                setVariant("error");
+            if (res.status === 425 || res.status === 403) {
                 throw new Error("You have already submitted");
             }
-            if (res.status === 403) {
-                setPopupOpen(true);
-                setVariant("error");
-                throw new Error("You have already submitted");
-            }
-            if (!res.data) throw new Error("Something went wrong");
+
+            if (!res.data) throw new Error("");
+
             if (res.status === 200) {
-                setPopupOpen(true);
-                setVariant("success");
+                return Promise.resolve();
             }
-            setSleds(initialState);
-            setTotal(0);
-            // eslint-disable-next-line
+
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
-            if (e?.response?.status === 403) {
-                setPopupOpen(true);
-                setVariant("error");
-                throw new Error("You have already submitted");
-            }
-            console.log(e.message);
+            console.log("Error", e);
+        } finally {
+            setSuccessModalShown(true);
         }
+
+        setSleds(initialState);
+        setTotal(0);
     }
 
     return (<div className="container">
-        <Toaster position={"top-right"}/>
+        <ToastContainer autoClose={5000}/>
+        <Modal onClose={() => setSuccessModalShown(false)} open={successModalShown} fitContent hideHeader>
+            <h3>Köszönjük szavazatát!</h3>
+            <button onClick={() => {
+                window.open("https://nexon.hu", "_blank")?.focus()
+                setSuccessModalShown(false);
+            }}>Kezdőlap</button>
+        </Modal>
         <div
             className="main"
             style={{
@@ -95,19 +91,12 @@ function App() {
             }}
         >
             <div className="main__hero">
-                <img src={"/assets/header.svg"} style={{width: "100%"}}/>
+                <img src={"/assets/header.svg"} alt={"Nexon header"} style={{width: "100%"}}/>
             </div>
-
             <div className="main__content">
                 <div className="main__content--wrapper">
-                    <p className="fontMedium grayText">
-                        A csúszkán minden beosztás 400 000 forintot jelent. Húzza az ajándékokat aszerint,
-                        ahogyan Ön osztaná el az adományt az alapítványok között. A kiválasztott arányokat
-                        végül egyesítjük, s ennek megfelelően osztjuk szét a felajánlott összeget a négy
-                        szervezet között. Miután végzett, az „Elküldöm” gombra kattintva véglegesítse döntését.
-                    </p>
+                    <p className="fontMedium grayText">{MAIN_DESCRIPTION}</p>
                 </div>
-                <Toaster/>
                 <div className="main__content-container">
                     <TotalContext.Provider value={{total, setTotal}}>
                         <SledContext.Provider value={{sleds, setSleds}}>
@@ -125,66 +114,20 @@ function App() {
                             })}
 
                             <div className="main__content-container-buttons bottom-gradient">
-                                {popupOpen ? (<div className="modal">
-                                    <div className="content">
-                                        <div className="header">
-                                            <button
-                                                className="popup__content-close-btn"
-                                                onClick={() => {
-                                                    setPopupOpen(false);
-                                                }}
-                                            >
-                                                <img
-                                                    src="../public/assets/buttons/close.svg"
-                                                    width={35}
-                                                    height={35}
-                                                    alt="close btn"
-                                                />
-                                            </button>
-                                        </div>
-                                        {variant === "success" && (<>
-                                            <h1 className="popup__title fontExtraBold">
-                                                Köszönjük szavazatát!
-                                            </h1>
-                                            <button
-                                                onClick={() => (window.parent.location.href = "https://www.nexon.hu/")}
-                                                className="popup__content-home-btn"
-                                            >
-                                                <span className="fontExtraBold">Kezdőlap</span>
-                                            </button>
-                                        </>)}
-                                        {variant === "error" && (<>
-                                            <h1 className="popup__title fontExtraBold">
-                                                Köszönjük!
-                                            </h1>
-                                            <p className="fontMedium">
-                                                Már regisztráltuk az Ön szavazatát, kérjük
-                                                próbálja meg később!
-                                            </p>
-                                            <button
-                                                onClick={() => (window.parent.location.href = "https://www.nexon.hu/")}
-                                                className="popup__content-home-btn"
-                                            >
-                                                <span className="fontExtraBold">Kezdőlap</span>
-                                            </button>
-                                        </>)}
-                                    </div>
-                                </div>) : null}
                                 <button
                                     onClick={() => {
                                         setSleds(initialState);
                                         setTotal(0);
                                     }}
                                     disabled={total === 0}
-                                    className="main__content-container-button-back  fontExtraBold"
+                                    className="main__content-container-button-back fontExtraBold bottom-button"
                                 >
                                     VISSZAÁLLÍTÁS
                                 </button>
                                 <button
-                                    className="main__content-container-button-save  fontExtraBold"
-                                    onClick={handleSubmit}
+                                    className="main__content-container-button-save fontExtraBold bottom-button"
+                                    onClick={() => handleSubmit()}
                                     disabled={(() => {
-                                        console.log(total);
                                         return total < REQUIRED_DONATION_SUM
                                     })()}
                                 >

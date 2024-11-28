@@ -38,6 +38,9 @@ export type TTotalContext = {
 
 export type TDataToSubmit = Record<string, number> & { ip?: string };
 
-export const API_URL_DEVELOPMENT = "https://nexon.dev.studiopresent.cloud/giveaway";
-export const API_URL_STAGING = "https://nexon.stage.studiopresent.cloud/giveaway";
-export const API_URL_PRODUCTION = "https://nexon.hu/giveaway";
+export const API_URLS = {
+    alt: "https://google.com/",
+    dev: "https://nexon.dev.studiopresent.cloud/giveaway",
+    stage: "https://nexon.stage.studiopresent.cloud/giveaway",
+    prod: "https://nexon.hu/giveaway",
+}

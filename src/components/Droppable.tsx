@@ -1,5 +1,5 @@
 import { useDroppable } from "@dnd-kit/core";
-import { TDroppableProps } from "../types";
+import { TDroppableProps } from "../types.ts";
 
 export default function Droppable(props: TDroppableProps) {
     const { setNodeRef } = useDroppable({
