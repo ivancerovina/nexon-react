@@ -90,11 +90,10 @@ function App() {
                 backgroundImage: "url(/themes/custom/nexon/libraries/karacsony/build/bgImage.png)",
             }}
         >
-            <div className="main__hero">
-                <img src={"/assets/header.svg"} alt={"Nexon header"} style={{width: "100%"}}/>
+            <div className="main__hero" style={{background: "url(/assets/header.svg)", backgroundSize: "contain", width: "100%", height: "100%", backgroundPosition: "center", aspectRatio: 750 / 418}}>
             </div>
             <div className="main__content">
-                <div className="main__content--wrapper">
+                <div className="main__content--wrapper">s
                     <p className="fontMedium grayText">{MAIN_DESCRIPTION}</p>
                 </div>
                 <div className="main__content-container">
